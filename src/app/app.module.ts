@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './components/card/card.component';
 import { LegendComponent } from './components/legend/legend.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FilterUnitsService } from './services/filter-units.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     CommonModule,    
   ],
-  providers: [],
+  providers: [
+    FilterUnitsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

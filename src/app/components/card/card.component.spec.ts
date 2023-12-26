@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
+import { cardMock } from '../../mocks/card.mock';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -12,6 +13,7 @@ describe('CardComponent', () => {
     });
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
+    component.card = cardMock;
     fixture.detectChanges();
   });
 

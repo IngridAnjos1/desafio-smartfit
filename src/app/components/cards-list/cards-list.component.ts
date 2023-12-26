@@ -1,4 +1,4 @@
-import { GetUnitsService } from 'src/app/services/get-units.service';
+import { GetUnitsService } from '../../services/get-units.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Location } from 'src/app/types/location.interface';
 
