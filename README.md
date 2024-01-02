@@ -12,7 +12,7 @@ Angular CLI: Instale globalmente com npm install -g @angular/cli
 ## Instalação
 
 1. Clone o repositório:
-  git clone https://seurepositorio.com/smart-fit-angular.git
+  git clone https://github.com/IngridAnjos1/desafio-smartfit.git
 
 2. Navegue até o diretório do projeto:
   cd smart-fit-angular
