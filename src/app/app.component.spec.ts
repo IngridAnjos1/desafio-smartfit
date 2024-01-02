@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -10,9 +10,18 @@ import { LegendComponent } from './components/legend/legend.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FilterUnitsService } from './services/filter-units.service';
+import { GetUnitsService } from './services/get-units.service';
+import { GetUnitServiceMock } from './mocks/get-unit.service.mock';
+import { locationMock } from './mocks/location.mock';
 
 describe('AppComponent', () => {
-  beforeEach(async() => TestBed.configureTestingModule({
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let getUnitService: GetUnitsService;
+
+  beforeEach(() => {
+     TestBed.configureTestingModule({
     imports:[
       RouterTestingModule,
       HttpClientModule,
@@ -27,12 +36,28 @@ describe('AppComponent', () => {
       CardsListComponent,
       CardComponent,
       LegendComponent,
-      FooterComponent]
-  }));
+      FooterComponent],
+    providers:[
+      FilterUnitsService,{
+        provide:GetUnitsService,
+        useValue:GetUnitServiceMock
+      }
+    ]
+  }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    getUnitService = TestBed.inject(GetUnitsService);
+    component = fixture.componentInstance;
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
+  });
+
+  it('shold set unitLists onSubmit', ()=>{
+    component.onSubmit();
+
+    expect(getUnitService.getFilteredUnits).toHaveBeenCalled();
+    expect(component.unitsList).toEqual([locationMock]);
   });
 });
