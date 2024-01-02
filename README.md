@@ -33,6 +33,9 @@ O aplicativo estará disponível em http://localhost:4200/.
 ## Estrutura do Projeto
 
 src/app/components: Contém os componentes Angular.
+
 src/app/services: Contém serviços Angular.
+
 src/app/types: Define as interfaces TypeScript.
+
 src/app/tests: Armazena os testes unitários usando Jest.
